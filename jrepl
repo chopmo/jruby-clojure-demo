@@ -1,0 +1,16 @@
+#!/usr/bin/env jruby
+require 'rubygems'
+require 'java'
+# given that your files are in ./deps (relative to the location of this file)
+Dir["#{File.dirname(__FILE__)}/deps/*.jar"].each do |jar|
+  require jar
+end
+# and you have a ./lib directory (again, realtive to this file)
+$:.unshift "#{File.dirname(__FILE__)}/lib"
+require 'jrclj'
+
+require 'jruby'
+JRuby.objectspace = true
+
+require "irb"
+IRB.start(__FILE__)
